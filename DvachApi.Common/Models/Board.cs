@@ -1,4 +1,6 @@
-﻿namespace DvachApi.Common.Models;
+﻿using Newtonsoft.Json;
+
+namespace DvachApi.Common.Models;
 
 public class Board
 {
@@ -28,4 +30,14 @@ public class Board
     public int MaxFilesSize { get; set; }
     public List<string>? Tags { get; set; }
     public List<Icon>? Icons { get; set; }
+
+    public static List<Board>? GetBoards()
+    {
+        HttpClient client = new HttpClient();
+        client.BaseAddress = new Uri("https://2ch.hk/api/mobile/v2/boards");
+        var request = new HttpRequestMessage();
+        var response = client.Send(request);
+        List<Board>? boards = JsonConvert.DeserializeObject<List<Board>>(response.Content.ReadAsStringAsync().Result);
+        return boards;
+    }
 }
