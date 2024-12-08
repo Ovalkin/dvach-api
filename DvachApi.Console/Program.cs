@@ -2,9 +2,9 @@
 
 List<Board>? boards = Board.GetBoards();
 
-if (boards != null)
-    foreach (var board in boards)
-    {
-        Console.WriteLine($"{board.Id} - {board.Name}. {board.Category}");
-        Console.WriteLine("--------------------------------------------------------------------");
-    }
+
+Board bred = boards![0].LoadThreads();
+foreach (var thread in bred.Threads)
+{
+    Console.WriteLine(thread.Comment);
+}

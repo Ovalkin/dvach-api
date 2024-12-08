@@ -30,6 +30,7 @@ public class Board
     public int MaxFilesSize { get; set; }
     public List<string>? Tags { get; set; }
     public List<Icon>? Icons { get; set; }
+    public List<Thread>? Threads { get; set; }
 
     public static List<Board>? GetBoards()
     {
@@ -39,5 +40,13 @@ public class Board
         var response = client.Send(request);
         List<Board>? boards = JsonConvert.DeserializeObject<List<Board>>(response.Content.ReadAsStringAsync().Result);
         return boards;
+    }
+    public Board? LoadThreads()
+    {
+        HttpClient client = new HttpClient();
+        client.BaseAddress = new Uri($"https://2ch.hk/{Id}/catalog.json");
+        var request = new HttpRequestMessage();
+        var response = client.Send(request);
+        return JsonConvert.DeserializeObject <Board>(response.Content.ReadAsStringAsync().Result);
     }
 }
