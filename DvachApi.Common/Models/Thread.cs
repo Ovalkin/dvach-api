@@ -2,6 +2,7 @@
 
 public class Thread : Post
 {
-    public int FilesCount { get; set; }
-    public int PostsCount { get; set; }
+    public int FileCount { get; set; }
+    public int PostCount { get; set; }
+    public List<Post>? Posts { get; set; }
 }

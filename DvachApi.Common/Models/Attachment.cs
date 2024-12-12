@@ -4,7 +4,7 @@ namespace DvachApi.Common.Models;
 
 public class Attachment
 {
-    public FileTypes Type { get; set; }
+    public FileType Type { get; set; }
     public bool Nsfw { get; set; }
     public int Size { get; set; }
     public int Width { get; set; }

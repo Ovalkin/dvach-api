@@ -2,7 +2,7 @@
 
 public class Icon
 {
-    public int Num { get; set; }
-    public string Name { get; set; }
-    public string Url { get; set; }
+    public string Name { get; set; }= null!;
+    public int Num { set; get; }
+    public string Url { get; set; }= null!;
 }
